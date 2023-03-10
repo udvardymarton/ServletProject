@@ -20,6 +20,7 @@ public class ProfileServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
+            out.println("<met charset=UTF-8>");
             out.println("<style>");
             out.println("form input { margin-right: 10px}");
             out.println("table, th, td { border: 1px solid;}");
@@ -54,15 +55,14 @@ public class ProfileServlet extends HttpServlet {
                 resultSet = databaseConnect.getProfileTable();
             }
             if (filterTextField != null) {
+                resultSet = databaseConnect.getFilteredProfileTable(filterTextField);
                 while (resultSet.next()) {
                     String id = resultSet.getString("profile_id");
                     String name = resultSet.getString("name");
-                    if (name.contains(filterTextField)) {
-                        out.println("<tr>");
-                        out.println("<td>" + id + "</td>");
-                        out.println("<td>" + name + "</td>");
-                        out.println("</tr>");
-                    }
+                    out.println("<tr>");
+                    out.println("<td>" + id + "</td>");
+                    out.println("<td>" + name + "</td>");
+                    out.println("</tr>");
                 }
             }
             else {

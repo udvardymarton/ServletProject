@@ -48,6 +48,13 @@ public class DatabaseConnect {
         return statement.executeQuery(query);
     }
 
+    public ResultSet getFilteredProfileTable(String filter) throws SQLException {
+        String sql = "SELECT * FROM profile WHERE (?)";
+        PreparedStatement preparedStatement = con.prepareStatement(sql);
+        preparedStatement.setString(1,filter);
+        return preparedStatement.executeQuery();
+    }
+
     public void addElementToTable(String value) throws SQLException {
         String sql = "INSERT INTO PROFILE (name) VALUES (?)";
         PreparedStatement prepareStatement = con.prepareStatement(sql);

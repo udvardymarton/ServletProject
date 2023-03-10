@@ -17,8 +17,6 @@
         <version>2.2</version>
         <configuration>
           <server>myServer</server>
-          <url>http://localhost:8080/manager/text</url>
-          <path>/app2</path>
         </configuration>
       </plugin>
       <plugin>
